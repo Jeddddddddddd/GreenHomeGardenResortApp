@@ -25,13 +25,13 @@ function Chatbot() {
 
     if (lowerInput.includes("hi") || lowerInput.includes("hey") || lowerInput.includes("hello")) {
       reply = "Hi, Welcome To Green Home Garden Resort, How can I help you?";
-    } else if (lowerInput.includes("contact")) {
+    } else if (lowerInput.includes("contact") || lowerInput.includes("number")) {
       reply = "Scroll down to the Contact section or click the Contact at the top section.";
     } else if (lowerInput.includes("packages") || lowerInput.includes("package")) {
       reply = "Scroll down to the Packages section or click the Packages at the top section.";
-    } else if (lowerInput.includes("about")) {
+    } else if (lowerInput.includes("content") || lowerInput.includes("context")) {
       reply = "Scroll down to the About section or click the About at the top section.";
-    } else if (lowerInput.includes("entrance") || lowerInput.includes("rate") || lowerInput.includes("price")) {
+    } else if (lowerInput.includes("entrance") || lowerInput.includes("rate") || lowerInput.includes("price") || lowerInput.includes("fee") || lowerInput.includes("person")) {
       reply = "Day Tour (10AM-3PM) = 75/HEAD\nNight Tour (3PM-9PM) = 100/HEAD\nOvernight (3PM-10AM) = Depends on package";
     } else if (lowerInput.includes("food") || lowerInput.includes("corkage")) {
       reply = "We allow outside food! \nNo corkage fee for food. \nNote: Corkage fee applies to alcoholic drinks only.";
@@ -43,7 +43,11 @@ function Chatbot() {
       reply = "Pool hours match your tour schedule. \nProper swimming attire is required for all guests.";
     } else if (lowerInput.includes("room") || lowerInput.includes("rooms")) {
       reply = "Kindly check for the Packages at the top side or scroll down at the Packages page.";
-    }
+    } else if (lowerInput.includes("open") || lowerInput.includes("time") || lowerInput.includes("hours")) {
+      reply = "Our resort is open from 8:00 AM to 10:00 PM.";
+    } else if (lowerInput.includes("gcash") || lowerInput.includes("payment")) {
+      reply = "We accept GCash and cash payments for reservations.";
+  }
 
     updated.push({ text: reply, sender: "bot" });
     setMessages(updated);

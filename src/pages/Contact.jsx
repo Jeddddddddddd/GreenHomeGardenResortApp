@@ -67,7 +67,7 @@ function Contact() {
                 href="mailto:greenhomegardenresort@gmail.com"
                 className="contact-link"
               >
-                greenhomegarden...
+                @GreenHomeGardenResort
               </a>
             </div>
 
@@ -75,7 +75,7 @@ function Contact() {
             <div className="contact-location">
               <span className="contact-label">Location</span>
               <a
-                href="https://www.google.com/maps"
+                href="https://www.google.com/maps/place/Green+Home+Garden+Resort/@7.072984,125.5023907,17z/data=!3m1!4b1!4m6!3m5!1s0x32f91395bfc2e96d:0x564debbfd2f55b51!8m2!3d7.0729787!4d125.5049656!16s%2Fg%2F11qyc3p0w5?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="contact-link"

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/GreenHomeLogo.jpg";
 
 function Header() {
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header className="header">
 
@@ -15,8 +18,16 @@ function Header() {
         <h1 className="header-title">Green Home Garden Resort</h1>
       </div>
 
-      {/* Right: Navigation */}
-      <nav className="header-nav">
+      {/* Hamburger Button */}
+      <div 
+        className="menu-toggle"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        ☰
+      </div>
+
+      {/* Navigation */}
+      <nav className={`header-nav ${menuOpen ? "active" : ""}`}>
         <a href="#about">About</a>
         <a href="#projects">Packages</a>
         <a href="#contact">Contact</a>
