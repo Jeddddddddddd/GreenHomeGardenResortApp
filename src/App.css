@@ -37,45 +37,35 @@ a:hover {
 
 /* Headings */
 h1, h2, h3 {
-  font-weight: 800;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.1);
   margin: 0;
 }
 
+/* ===================== MAIN TITLE (CAPTIVATING) ===================== */
 h1 {
-  font-size: 3rem;
-  color: #2e7d32;
+  font-size: clamp(2.5rem, 5vw, 3rem);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  line-height: 1.2;
+  color: #2e9233;
   background: linear-gradient(90deg, #0cc916, #0cc916);
   -webkit-background-clip: text;
   -webkit-text-fill-color: #0cc916;
-  text-shadow: 0 0 2px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  transition: all 0.4s ease;
 }
 
 h1:hover {
   color: #10df17;
   -webkit-text-fill-color: #10df17;
-  text-shadow: 0 0 5px rgba(0,0,0,0.3);
+  text-shadow: 0 0 15px rgba(0,0,0,0.4);
+  transform: scale(1.05);
   cursor: pointer;
-}
-
-h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1em;
-  background: linear-gradient(90deg, #2e7d32, #66bb6a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-h3 {
-  font-size: 1.6rem;
-  margin-bottom: 0.5em;
-  color: #fff;
 }
 
 /* ===================== HEADER ===================== */
 .header {
-  padding: 20px;
+  padding: 20px 40px;
   background-color: #2d531a;
   display: flex;
   justify-content: space-between;
@@ -110,21 +100,41 @@ h3 {
   cursor: pointer;
 }
 
-/* Header navigation */
+/* ===================== NAV LINKS (CAPTIVATING) ===================== */
 .header-nav {
   display: flex;
-  gap: 30px;
+  gap: 35px;
   flex-wrap: nowrap;
 }
 
 .header-nav a {
-  color: white;
+  position: relative;
   font-weight: 500;
-  white-space: nowrap;
+  font-size: 18px;
+  padding: 8px 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.header-nav a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #00e676;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.header-nav a:hover::after {
+  width: 100%;
 }
 
 .header-nav a:hover {
-  text-decoration: underline;
+  transform: scale(1.05);
 }
 
 /* ===================== FOOTER ===================== */
@@ -244,7 +254,7 @@ h3 {
   transform: scale(1.05);
 }
 
-/* ===================== CONTACT SECTION (Original Layout, Button Updated) ===================== */
+/* ===================== CONTACT SECTION ===================== */
 .contact-section {
   padding: 120px 20px;
   background-color: #45644a;
@@ -263,26 +273,31 @@ h3 {
   align-items: center;
 }
 
+/* ===================== CONTACT IMAGE FIX ===================== */
 .contact-image-container {
   flex: 1;
-  min-width: 350px;
+  min-width: 250px;
+  max-width: 100%;
   display: flex;
   justify-content: center;
-  perspective: 1000px; /* For tilt effect */
+  perspective: 1000px;
+  overflow: hidden;
 }
 
 .contact-image {
   width: 100%;
-  height: 500px;
+  max-width: 500px;
+  height: auto;
   object-fit: cover;
   border-radius: 24px;
   filter: brightness(0.8);
   border: 1px solid rgba(0, 230, 118, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-image-container:hover .contact-image {
-  transform: rotateY(10deg) rotateX(5deg) scale(1.02); /* tilt effect */
+  transform: rotateY(10deg) rotateX(5deg) scale(1.02);
+  filter: brightness(1.1) saturate(1.3) hue-rotate(80deg); /* brings back color glow */
   box-shadow: 0 20px 40px rgba(0, 230, 118, 0.4);
 }
 
@@ -364,7 +379,7 @@ h3 {
   justify-content: center;
 }
 
-/* Package Card & Hover Animation (Green Hover + Color Animation) */
+/* Package Card & Hover Animation */
 .package-card {
   border-radius: 40px;
   padding: 20px;
@@ -389,7 +404,7 @@ h3 {
 
 .package-card:hover .package-img {
   transform: scale(1.05);
-  filter: brightness(1.1) saturate(1.3) hue-rotate(80deg); /* color animation on hover */
+  filter: brightness(1.1) saturate(1.3) hue-rotate(80deg);
 }
 
 .package-title {
@@ -411,28 +426,61 @@ h3 {
 
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 768px) {
+  /* Header: keep burger beside title */
   .header {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
   }
 
   .menu-toggle {
     display: block;
   }
 
+  /* Side panel navbar */
   .header-nav {
-    display: none;
-    flex-direction: column;
-    width: 100%;
+    position: fixed;
+    top: 0;
+    right: -300px; /* hidden by default */
+    width: 250px;
+    height: 100vh;
     background-color: #2d531a;
-    padding: 15px 0;
-    gap: 15px;
+    flex-direction: column;
+    gap: 30px;
+    padding: 60px 20px;
+    transition: right 0.3s ease;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+    z-index: 999;
   }
 
   .header-nav.active {
-    display: flex;
+    right: 0; /* slide in */
+  }
+
+  .header-nav a {
+    font-size: 18px;
+    padding: 12px 10px;
+  }
+
+  /* Optional overlay */
+  .nav-overlay {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 998;
+  }
+
+  .nav-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .about-gallery {

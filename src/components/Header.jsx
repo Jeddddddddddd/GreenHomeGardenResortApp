@@ -6,34 +6,42 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="header">
+    <>
+      <header className="header">
 
-      {/* Left: Logo + Title */}
-      <div className="header-left">
-        <img
-          src={logo}
-          alt="Resort Logo"
-          className="header-logo"
-        />
-        <h1 className="header-title">Green Home Garden Resort</h1>
-      </div>
+        {/* Left: Logo + Title */}
+        <div className="header-left">
+          <img
+            src={logo}
+            alt="Resort Logo"
+            className="header-logo"
+          />
+          <h1 className="header-title">Green Home Garden Resort</h1>
+        </div>
 
-      {/* Hamburger Button */}
+        {/* Hamburger Button */}
+        <div 
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </div>
+
+        {/* Navigation */}
+        <nav className={`header-nav ${menuOpen ? "active" : ""}`}>
+          <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+          <a href="#projects" onClick={() => setMenuOpen(false)}>Packages</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+        </nav>
+
+      </header>
+
+      {/* Overlay */}
       <div 
-        className="menu-toggle"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        ☰
-      </div>
-
-      {/* Navigation */}
-      <nav className={`header-nav ${menuOpen ? "active" : ""}`}>
-        <a href="#about">About</a>
-        <a href="#projects">Packages</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-    </header>
+        className={`nav-overlay ${menuOpen ? "active" : ""}`}
+        onClick={() => setMenuOpen(false)}
+      />
+    </>
   );
 }
 
